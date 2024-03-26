@@ -1,0 +1,104 @@
+server:
+  port: 8334
+
+
+spring:
+  main:
+    allow-circular-references: true
+    # kafka配置
+  kafka:
+    bootstrap-servers: 192.168.0.105:9092
+    producer:
+      retries: 3
+    #提高并发量
+      linger_ms: 3000
+    listener:
+      missing-topics-fatal: false
+      ack-mode: manual_immediate
+    consumer:
+      group-id: boot-kafka-group
+      enable-auto-commit: false
+      max-poll-records: 10
+      properties:
+        max.poll.interval.ms: 3600000
+redis:
+  port: 6379
+  host: 192.168.77.130
+
+disk:
+  area: NJ
+
+download:
+  batch: 4
+
+
+
+task:
+  batch:
+    retry: 2
+    download: 20
+    pack: 2
+  consumer:
+    core: 40
+    max: 100
+    capacity: 100
+  producer:
+    core: 4
+    max: 20
+    capacity: 100
+  pack:
+    capacity: 1000
+    core: 4
+    max: 20
+  download:
+    capacity: 1000
+    core: 4
+    max: 20
+  retry:
+    capacity: 1000
+    core: 4
+    max: 20
+
+
+
+disknas:
+  temp:
+    cache:
+      - root: /usr/local/nas1
+        wright: 5
+      - root: /usr/local/nas2
+        wright: 5
+    name: temp.txt
+
+
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 60000
+
+
+
+# 应用全局唯一的身份标识
+app:
+  id: 20000
+# Apollo Meta Server 地址
+apollo:
+  meta: http://xxx.xxx.xxx.xxx:7881
+    # 自定义本地配置文件缓存路径
+  cacheDir: ./config
+    # 设置在应用启动阶段就加载 Apollo 配置
+  bootstrap:
+    enabled: true
+    namespaces: application
+# 注入 application namespace
+
+
+
+
+

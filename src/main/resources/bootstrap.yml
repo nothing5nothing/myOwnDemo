@@ -1,0 +1,8 @@
+
+
+
+apollo:
+  meta: http://localhost:8080
+  cacheDir: D:\apollo
+  bootstrap:
+    enabled: true
